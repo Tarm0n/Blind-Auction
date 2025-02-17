@@ -1,0 +1,32 @@
+print("Welcome to the secret auction!")
+
+auction = {}
+more_people = True
+
+
+def add_bidder():
+    global more_people
+    name = input("What is your name? ")
+    bid = int(input("What is your bid? "))
+    auction[name] = bid
+
+
+while more_people:
+    clear()
+    add_bidder()
+    more = input(
+        "Are there any other bidders? Type \"yes\" or \"no\" \n").lower()
+    if more != "yes":
+        break
+    else:
+        continue
+
+w_name = ""
+w_sum = 0
+best_bid = 0
+for bidder in auction:
+    if auction[bidder] > best_bid:
+        best_bid = auction[bidder]
+        w_name = bidder
+        w_sum = auction[bidder]
+print(f"\"{w_name}\" wins the auction with ${w_sum}!")
